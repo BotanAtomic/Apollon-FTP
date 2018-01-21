@@ -5,6 +5,7 @@ import org.apollon.network.core.PooledFTPClient;
 import org.apollon.network.message.ClientMessageHandler;
 import org.apollon.network.message.Message;
 import org.apollon.network.message.impl.ConnectionResponse;
+import org.apollon.network.message.impl.ErrorResponse;
 
 import java.net.Socket;
 
@@ -23,6 +24,7 @@ public class ClientMessageProcessor {
 
     private void init() {
         this.handlers[0] = new ConnectionResponse();
+        this.handlers[Byte.MAX_VALUE] = new ErrorResponse();
     }
 
     public void parse(Message message, PooledFTPClient client) {
