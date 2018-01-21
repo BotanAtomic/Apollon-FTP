@@ -1,0 +1,4 @@
+Transfert protocol :
+
+ [ID]
+1 byte +

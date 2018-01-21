@@ -21,4 +21,16 @@ public class User {
         this.password = password;
         this.rights = new CopyOnWriteArrayList<>(rights);
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public List<UserRights> getRights() {
+        return rights;
+    }
 }
