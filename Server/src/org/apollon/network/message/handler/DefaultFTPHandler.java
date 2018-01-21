@@ -7,8 +7,6 @@ import java.util.logging.Logger;
 
 public class DefaultFTPHandler implements FTPHandler {
 
-    private static final Logger logger = Logger.getLogger("Apollon.FTP");
-
     @Override
     public void onRead(FTPSession session, byte[] data) {
 
@@ -16,16 +14,16 @@ public class DefaultFTPHandler implements FTPHandler {
 
     @Override
     public void onClose(FTPSession session) {
-        logger.log(Level.INFO,"[Session {0}] closed", session.getId());
+        System.out.println("[Session " + session.getId() + "] closed");
     }
 
     @Override
     public void onConnect(FTPSession session) {
-        logger.log(Level.INFO,"[Session {0}] connected", session.getId());
+        System.out.println("[Session " + session.getId() + "] connected");
     }
 
     @Override
     public void onExceptionCaught(FTPSession session, Exception exception) {
-        logger.log(Level.SEVERE,"[Session {0}] exception : {1}", new Object[]{String.valueOf(session.getId()), exception.getMessage()});
+        System.out.println("[Session " + session.getId() + "] exception : " + exception.getMessage());
     }
 }

@@ -28,8 +28,6 @@ public class ByteBufferStream {
         }
     }
 
-
-
     public ByteBuffer convert() {
         return ByteBuffer.allocate(stream.size()).put(stream.toByteArray());
     }

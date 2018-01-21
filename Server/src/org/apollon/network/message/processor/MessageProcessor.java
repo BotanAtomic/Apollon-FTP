@@ -25,6 +25,6 @@ public class MessageProcessor {
 
     public void parse(Message message, FTPSession session, FTPServer server)  {
         this.handlers[message.getId()].parse(message.getData(), session, server);
-        System.out.println("Parse message " + message.getId() + " : Data = " + new String(message.getData()));
+        System.err.println("Parse message " + message.getId() + " : Data = " + new String(message.getData()));
     }
 }

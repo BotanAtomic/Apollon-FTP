@@ -25,7 +25,6 @@ public class FTPSession {
         this.root = root;
 
         root.getHandler().onConnect(this);
-        root.getHandler().onExceptionCaught(this, new Exception("Salam"));
 
         listen();
     }
@@ -80,6 +79,8 @@ public class FTPSession {
 
     public void attachUser(User user) {
         this.user = user;
+
+        System.out.println("Successfully attached User");
     }
 
     public int getId() {

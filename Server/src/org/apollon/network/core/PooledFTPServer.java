@@ -63,7 +63,7 @@ public class PooledFTPServer {
 
                 Thread.currentThread().join();
             } catch (Exception e) {
-                logger.log(Level.SEVERE, "Error occurred on FTP server startup : {0}", e.getMessage());
+                logger.log(Level.SEVERE, "FTP server failed to start [{0}]", e.getMessage());
             }
         }, "pooled-ftp-server").start();
     }

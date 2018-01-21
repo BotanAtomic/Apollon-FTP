@@ -5,14 +5,12 @@ import org.apollon.network.core.PooledFTPClient;
 
 import java.net.InetSocketAddress;
 
-public class FTPClient {
-
-    private PooledFTPClient pooledFTPClient;
+public class FTPClient extends PooledFTPClient {
 
     private final User user;
 
     public FTPClient(InetSocketAddress address, User user) throws Exception {
-        this.pooledFTPClient = new PooledFTPClient(address, user);
+        super(address, user);
         this.user = user;
     }
 
