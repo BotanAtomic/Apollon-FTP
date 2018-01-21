@@ -1,5 +1,6 @@
 package org.apollon.network.session;
 
+import org.apollon.entity.User;
 import org.apollon.network.core.PooledFTPServer;
 import org.apollon.network.message.Message;
 import org.apollon.network.message.type.MessageType;
@@ -16,6 +17,7 @@ public class FTPSession {
 
     private final PooledFTPServer root;
 
+    private User user;
 
     public FTPSession(int id, AsynchronousSocketChannel channel, PooledFTPServer root) {
         this.id = id;
@@ -73,6 +75,10 @@ public class FTPSession {
             root.getHandler().onClose(this);
             root.getSessions().remove(this.id);
         }
+    }
+
+    public void attachUser(User user) {
+        this.user = user;
     }
 
     public int getId() {
