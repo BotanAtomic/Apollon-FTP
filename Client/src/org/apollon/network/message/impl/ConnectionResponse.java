@@ -1,6 +1,7 @@
 package org.apollon.network.message.impl;
 
 import org.apollon.entity.Event;
+import org.apollon.entity.enums.EventType;
 import org.apollon.network.core.PooledFTPClient;
 import org.apollon.network.message.ClientMessageHandler;
 
@@ -12,9 +13,9 @@ public class ConnectionResponse implements ClientMessageHandler {
     public void parse(byte[] data, PooledFTPClient client, Socket socket) {
         if (data.length > 0 && data[0] == 1) {
             client.setAuthenticated(true);
-            client.handleEvent(Event.GOOD_CREDENTIALS);
+            client.handleEvent(new Event(EventType.GOOD_CREDENTIALS));
         } else {
-            client.handleEvent(Event.BAD_CREDENTIALS);
+            client.handleEvent(new Event(EventType.BAD_CREDENTIALS));
         }
     }
 

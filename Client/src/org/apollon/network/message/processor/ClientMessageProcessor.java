@@ -1,6 +1,7 @@
 package org.apollon.network.message.processor;
 
 import org.apollon.entity.Event;
+import org.apollon.entity.enums.EventType;
 import org.apollon.network.core.PooledFTPClient;
 import org.apollon.network.message.ClientMessageHandler;
 import org.apollon.network.message.Message;
@@ -24,14 +25,14 @@ public class ClientMessageProcessor {
 
     private void init() {
         this.handlers[0] = new ConnectionResponse();
-        this.handlers[Byte.MAX_VALUE] = new ErrorResponse();
+        this.handlers[Byte.MAX_VALUE - 1] = new ErrorResponse();
     }
 
     public void parse(Message message, PooledFTPClient client) {
         try {
             this.handlers[message.getId()].parse(message.getData(), client, socket);
         } catch (NullPointerException | IndexOutOfBoundsException e) {
-            client.handleEvent(Event.BAD_PROTOCOL);
+            client.handleEvent(new Event(EventType.BAD_PROTOCOL));
         }
     }
 

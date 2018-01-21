@@ -7,7 +7,14 @@ import java.net.InetSocketAddress;
 public class Client {
 
     public static void main(String[] args) throws Exception {
-        new FTPClient(new InetSocketAddress(2045), new User("Botan", "Ahmad"));
+       FTPClient client = new FTPClient(new InetSocketAddress(2045));
+
+       client.setEventHandler(event -> {
+           System.err.println("New event " + event.getEventType().name() + " / code " + event.getCode());
+       });
+
+       client.connect(new User("Botan", "Ahmad"));
+
     }
 
 }

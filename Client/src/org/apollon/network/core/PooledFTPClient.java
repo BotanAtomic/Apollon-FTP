@@ -16,23 +16,21 @@ import java.util.logging.Logger;
 public class PooledFTPClient {
 
     private static final Logger logger = Logger.getLogger("Apollon.FTP");
-
-    private final ClientMessageProcessor messageProcessor;
-
-    private final Socket channel;
-
+    private final InetSocketAddress address;
+    private ClientMessageProcessor messageProcessor;
+    private Socket channel;
     private boolean authenticated = false;
+    private EventHandler eventHandler = EventHandler.empty();
 
-    private EventHandler eventHandler = event -> {
+    public PooledFTPClient(InetSocketAddress address) {
+        this.address = address;
+    }
 
-    };
-
-    public PooledFTPClient(InetSocketAddress address, User user) throws Exception {
-        channel = new Socket(address.getHostName(), address.getPort());
-        messageProcessor = new ClientMessageProcessor(channel);
-
+    public void connect(User user) {
         new Thread(() -> {
             try {
+                channel = new Socket(address.getHostName(), address.getPort());
+                messageProcessor = new ClientMessageProcessor(channel);
 
                 while (!channel.isConnected()) ;
 
@@ -53,10 +51,10 @@ public class PooledFTPClient {
 
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 logger.log(Level.SEVERE, "An error was occurred on FTP Client [{0}]", e.getMessage());
             }
         }, "pooled-ftp-client").start();
-
     }
 
     public boolean isAuthenticated() {

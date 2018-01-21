@@ -13,7 +13,7 @@ public class ServerTransactionProtocol {
     }
 
     public static ByteBuffer returnError(short errorCode) {
-        return ByteBuffer.allocate(Integer.SIZE + Short.SIZE + 1).put(Byte.MAX_VALUE).putInt(Short.SIZE).putShort(errorCode).flip();
+        return ByteBuffer.allocate(Integer.SIZE + Short.SIZE + 1).put((byte) (Byte.MAX_VALUE - 1)).putInt(Short.SIZE).putShort(errorCode).flip();
     }
 
 }

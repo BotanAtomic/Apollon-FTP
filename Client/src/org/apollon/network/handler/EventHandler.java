@@ -6,4 +6,10 @@ public interface EventHandler {
 
     void handleEvent(Event event);
 
+    static EventHandler empty() {
+        return event -> {
+
+        };
+    }
+
 }
