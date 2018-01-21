@@ -8,7 +8,8 @@ public class ConnectionMessage implements MessageHandler {
 
     @Override
     public void parse(byte[] data, FTPSession session, FTPServer server) {
-        String[] messageData = new String(data).split(";");
+        String[] credentials = new String(data).split(";");
+
 
     }
 }

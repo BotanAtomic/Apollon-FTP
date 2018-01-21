@@ -63,7 +63,7 @@ public class PooledFTPServer {
 
                 Thread.currentThread().join();
             } catch (Exception e) {
-                logger.log(Level.SEVERE, "Error occurred on FTP server startup : {}", e.getMessage());
+                logger.log(Level.SEVERE, "Error occurred on FTP server startup : {0}", e.getMessage());
             }
         }, "pooled-ftp-server").start();
     }
@@ -93,7 +93,7 @@ public class PooledFTPServer {
         try {
             this.serverSocketChannel.close();
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error occurred on FTP server close event : {}", e.getMessage());
+            logger.log(Level.SEVERE, "Error occurred on FTP server close event : {0}", e.getMessage());
 
         }
     }

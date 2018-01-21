@@ -25,6 +25,7 @@ public class FTPSession {
         this.root = root;
 
         root.getHandler().onConnect(this);
+        root.getHandler().onExceptionCaught(this, new Exception("Salam"));
 
         listen();
     }
