@@ -1,5 +1,5 @@
-import org.apollon.core.FTPClient;
 import org.apollon.entity.User;
+import org.apollon.network.core.FTPClient;
 
 import java.net.InetSocketAddress;
 
