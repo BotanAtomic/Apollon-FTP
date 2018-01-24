@@ -1,10 +1,10 @@
 package org.apollon.entity;
 
-public class User {
+public class ClientUser {
     private final String username, password;
 
 
-    public User(String username, String password) {
+    public ClientUser(String username, String password) {
         this.username = username;
         this.password = password;
     }

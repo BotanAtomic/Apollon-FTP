@@ -13,6 +13,10 @@ public class ConnectionResponse implements ClientMessageHandler {
     public void parse(byte[] data, FTPClient client, Socket socket) {
         if (data.length > 0 && data[0] == 1) {
             client.setAuthenticated(true);
+
+            if (client.getOnConnect() != null)
+                client.getOnConnect().run();
+
             client.handleEvent(new Event(EventType.GOOD_CREDENTIALS));
         } else {
             client.handleEvent(new Event(EventType.BAD_CREDENTIALS));

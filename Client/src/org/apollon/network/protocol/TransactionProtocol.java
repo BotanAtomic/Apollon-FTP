@@ -1,13 +1,13 @@
 package org.apollon.network.protocol;
 
-import org.apollon.entity.User;
+import org.apollon.entity.ClientUser;
 import org.apollon.network.buffer.ByteBufferStream;
 
 import java.nio.ByteBuffer;
 
 public class TransactionProtocol {
 
-    public static ByteBuffer connectionMessage(User user) {
+    public static ByteBuffer connectionMessage(ClientUser user) {
         ByteBufferStream stream = new ByteBufferStream();
         stream.put((byte) 0);
 
